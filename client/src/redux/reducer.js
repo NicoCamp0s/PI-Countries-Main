@@ -1,4 +1,4 @@
-import * as act from "./actions";
+import { GET_COUNTRIES } from "./actions";
 
 const initialState = {
     countries: [],
@@ -8,9 +8,10 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    switch (action.payload) {
+    switch (action.type) {
         
-        case act.GET_COUNTRIES:
+        case GET_COUNTRIES:
+            console.log(action);
             return {
                 ...state,
                 countries: action.payload

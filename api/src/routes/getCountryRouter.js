@@ -5,7 +5,7 @@ const cts = require("../controllers/countryCtrl");
 //?peticion por "name" y muestra de todos
 getRouter.get("/", async(req, res) => {
     const { name } = req.query;
-    console.log(name);
+    //console.log(name);
     try {
         //* por name...
         if(name) {

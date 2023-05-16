@@ -13,7 +13,7 @@ const getActivities = async() => {
 const postActivity = async(name, difficulty, duration, season, countries) => {
     try {
         const newActivity = await Activity.create({name, difficulty, duration, season});
-        console.log(newActivity);
+        //console.log(newActivity);
         const selectCountry = await Country.findAll({
             where: {
                 name: countries
