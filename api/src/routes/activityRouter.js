@@ -4,6 +4,7 @@ const cts = require("../controllers/activityCtrl");
 
 postRouter.use("/", async(req, res) => {
     const {name, difficulty, duration, season, countries} = req.body;
+    //console.log(req.body);
     try {
         const newActivity = await cts.postActivity(name, difficulty, duration, season, countries);
         res.status(200).json(newActivity);
