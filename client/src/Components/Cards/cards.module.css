@@ -1,0 +1,32 @@
+/* Estilos para la tarjeta de cada país */
+.card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.noUnderline {
+    text-decoration: none;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.noBullet {
+    list-style-type: none;
+  }
