@@ -3,7 +3,7 @@ const { Activity, Country } = require("../db");
 
 const getActivities = async() => {
     try {
-        let activity = await Activity.findAll({});
+        let activity = await Activity.findAll();
         return activity;
     } catch (error) {
         console.log(error.message + " getActivity");
@@ -11,6 +11,7 @@ const getActivities = async() => {
 }
 
 const postActivity = async(name, difficulty, duration, season, countries) => {
+
     try {
         const newActivity = await Activity.create({name, difficulty, duration, season, countries});
         
