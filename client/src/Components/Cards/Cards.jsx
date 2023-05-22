@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
  
 const Cards = (props) => {
 
-    const {img, name, continent, id, capital} = props;
+    const {img, name, continent, id, capital, population} = props;
 
     return (
         <div className={css.card}>
@@ -14,6 +14,7 @@ const Cards = (props) => {
             <div>
                 <h3>Continent: {continent}</h3>
                 <h4>Capital: {capital}</h4>
+                <h4>{population}</h4>
                 {/* la "i" esta para agregar una clave unica a cada elemento de la lista de lenguajes */}
                 {/* <ul>Languages: {languages?.map((l, i) => <li key={i} className={css.noBullet}>{l}</li>)}</ul> */}
             </div>

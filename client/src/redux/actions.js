@@ -8,6 +8,7 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 
 //! REVISAR GETACIVITIES Y CREAR LA ACCION DE RENDERIZAR ESAS CARTRAS CON ACVITIDIADES
 
@@ -56,6 +57,15 @@ export const getActivities = () => {
         dispatch({
             type: GET_ACTIVITIES,
             payload: response.data
+        })
+    }
+}
+
+export const FilterByActivity = (a) => {
+    return async function(dispatch) {
+        dispatch({
+            type: FILTER_ACTIVITY,
+            payload: a
         })
     }
 }

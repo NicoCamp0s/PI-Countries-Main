@@ -18,6 +18,10 @@ const Home = () => {
         dispatch(act.getCountries())
     }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(act.getActivities())
+    }, [dispatch])
+
     const [home, setHome] = useState(true) 
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
@@ -46,7 +50,8 @@ const Home = () => {
     }
 
     const handleFilterActivity = (e) => {
-        dispatch(act.getActivities(e.target.value))
+        //?agregar action que me renderice y filtre
+        dispatch(act.FilterByActivity(e.target.value))
 
     }
 
@@ -96,7 +101,7 @@ const Home = () => {
                 {
                     currentCountries?.map((c) => {
                         return (
-                            <Cards key={c.id} img={c.flags} name={c.name} capital={c.capital} continent={c.continent} id={c.id} />
+                            <Cards key={c.id} img={c.flags} name={c.name} capital={c.capital} continent={c.continent} population={c.population} id={c.id} />
                         )
                     })
                 }

@@ -40,7 +40,7 @@ const Detail = () => {
                     <h3>Area: {countryDetail?.area} Metros cuadrados</h3>
                     <h3>Population: {countryDetail.population} Peoples</h3>
                     <ul>Languages: {countryDetail.languages?.map((l, i) => <li key={i} >{l}</li>)}</ul> 
-                </div>|||
+                </div>
                 <div className={css.activityDetail}>
                     <h2>Activities: </h2>
                         { 
