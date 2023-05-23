@@ -7,8 +7,7 @@ const initialState = {
     copyCountries: [],
     continent: [],
     activities: [],
-    countryDetail: [],
-    allActivities: [],
+    countryDetail: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -39,31 +38,6 @@ const reducer = (state = initialState, action) => {
                 countries: action.payload
             }
 
-            case act.ORDER_BY_NAME:
-                if (action.payload !== "default") {
-                  const countriesSorted = action.payload === 'asc' ?
-                  [...state.copyCountries].sort((a, b) => {
-                      if (a.name > b.name) return 1;
-                      if (b.name > a.name) return -1;
-                      return 0;
-                    }) :
-                    [...state.copyCountries].sort((a, b) => {
-                      if (a.name > b.name) return -1;
-                      if (b.name > a.name) return 1;
-                      return 0;
-                    });
-              
-                  return {
-                    ...state,
-                    countries: countriesSorted
-                  };
-                } else {
-                  return {
-                    ...state,
-                    countries: state.copyCountries
-                  };
-                }
-
         case act.ORDER_BY_NAME:
           if(action.payload !== "default") { 
             const countriesSorted = action.payload === 'asc' ?
@@ -73,10 +47,12 @@ const reducer = (state = initialState, action) => {
                     return 0;
                 }) :
                 [...state.countries].sort((a, b) => {
+                    console.log(a, b);
                     if (a.name > b.name) return -1;
                     if (b.name > a.name) return 1;
                     return 0;
                 })
+                console.log(countriesSorted);
             return {
                 ...state,
                 countries: countriesSorted
@@ -147,8 +123,6 @@ const reducer = (state = initialState, action) => {
             if(action.payload !== "default") {
                 const countries = state.copyCountries;
                 const countriesAct = countries.filter(c => c.activities.find(a =>a.season === action.payload))
-                console.log(countries[0].activities);
-                console.log(countriesAct);
                 return {
                     ...state,
                     countries: countriesAct
