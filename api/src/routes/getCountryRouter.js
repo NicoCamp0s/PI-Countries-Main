@@ -5,11 +5,9 @@ const cts = require("../controllers/countryCtrl");
 //?peticion por "name" y muestra de todos
 getRouter.get("/", async(req, res) => {
     const { name } = req.query;
-    //console.log(name);
     try {
         //* por name...
         if(name) {
-            //console.log(name);
             const countryByName = await cts.getCountryByName(name);
             if(countryByName) {
                 res.status(200).json(countryByName);
@@ -19,7 +17,7 @@ getRouter.get("/", async(req, res) => {
         } else {
             //* me traigo todos...
             const allCountries = await cts.getCountries();
-            //console.log(allCountries);
+            
             if(allCountries) {
                 res.status(200).json(allCountries);
             } else {

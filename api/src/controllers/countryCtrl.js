@@ -3,20 +3,15 @@ const { Activity, Country } = require("../db");
 const axios = require("axios");
 const {Op} = require("sequelize");
 
-//! SI NO FUNCA PROBAR CON PROMISE.ALL 
-//! DROPEAR LA TABLA DE COUNTRY PARA EFECTUAR LOS CAMBIOS
-//! Y PONER FORCE FALSE
 const getCountries = async() => {
     
     let DbCountries = await Country.findAll({
         include: [Activity]
     })
     try {
-        
         if(!DbCountries.length) {
             const response = await axios.get("https://restcountries.com/v3/all");
             //console.log(response);
-            console.log(response);
             const countries = response.data.map(country => {
                 return {
                     id: country.cca3,
