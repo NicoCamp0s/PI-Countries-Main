@@ -7,8 +7,6 @@ import Cards from "../../Components/Cards/Cards";
 import Paginate from "../../Components/Paginate/Paginate";
 import SearBar from "../../Components/NavBar/navBar";
 
-//! REVISAR LAS ACTIVITIES
-
 const Home = () => {
 
     const dispatch = useDispatch();
@@ -22,12 +20,15 @@ const Home = () => {
         dispatch(act.getActivities())
     }, [dispatch])
 
-    const [home, setHome] = useState(true) 
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
     const lastCountry = countriesPerPage * currentPage;
     const firstCountry = lastCountry - countriesPerPage;
     const currentCountries = country?.slice(firstCountry, lastCountry)
+
+    useEffect(() => {
+        setCurrentPage(1)
+    },[country])
 
     const paginate = (number) => {
         setCurrentPage(number)
@@ -36,23 +37,18 @@ const Home = () => {
     
     const handleOrderByName = (e) => {
         dispatch(act.orderByName(e.target.value))
-        //home ? setHome(false) : setHome(true)
     }
 
     const handleOrderByPopulation = (e) => {
         dispatch(act.orderByPopulation(e.target.value))
-        //home ? setHome(false) : setHome(true)
     }
 
     const handleFilter = (e) => {
         dispatch(act.FilterByContinent(e.target.value))
-        //home ? setHome(false) : setHome(true)
     }
 
     const handleFilterActivity = (e) => {
-        //?agregar action que me renderice y filtre
         dispatch(act.FilterByActivity(e.target.value))
-
     }
 
     return (
@@ -63,7 +59,7 @@ const Home = () => {
         : country ?
         <div className={css.home}>
             <div className={css.barraSuperior}>
-                <Link to="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ83pSr56Ikx23kegBZxYZfJ6Tp2_zI9SQ4DA&usqp=CAU" alt="logo" height="60" width="90"></img></Link>
+                <Link to="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2h5-n44RRfyiBCBxoUx3g_e_c77TvSeqxvA&usqp=CAU" alt="logo" height="60" width="90"></img></Link>
                 <SearBar></SearBar>
                 <select onChange={e => handleOrderByName(e)} defaultValue="default" className="" >
                     <option value="default" >Alphabetical order</option>
@@ -101,7 +97,7 @@ const Home = () => {
                 {
                     currentCountries?.map((c) => {
                         return (
-                            <Cards key={c.id} img={c.flags} name={c.name} capital={c.capital} continent={c.continent} population={c.population} id={c.id} />
+                            <Cards key={c.id} img={c.flags} name={c.name} capital={c.capital} continent={c.continent} population={c.population} id={c.id}/>
                         )
                     })
                 }
@@ -114,6 +110,7 @@ const Home = () => {
                 countries={country?.length}
                 paginate={paginate}
                 currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
                 />
             </div>  
         </div> : "countries not found"

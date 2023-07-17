@@ -60,7 +60,7 @@ const Form = () => {
           activity.name.trim() !== "" &&
           activity.difficulty !== "" &&
           activity.duration !== "" &&
-          activity.season.trim() !== ""
+          activity.season.trim().toUpperCase() !== ""
         );
     }
 

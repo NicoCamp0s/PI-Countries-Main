@@ -1,10 +1,9 @@
 import * as act from "./actions";
 
-//! HACER FILTRO, METODOS DE ORDENAMIENTO Y REVISAR EL FORM
-
 const initialState = {
     countries: [],
     copyCountries: [],
+    countriesFiltered: [],
     continent: [],
     activities: [],
     countryDetail: []
@@ -108,8 +107,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 activities: action.payload
             }
-        
-        //! REVISAR
+    
         case act.FILTER_ACTIVITY:
             if(action.payload === "All") {
                 const countries = state.copyCountries;

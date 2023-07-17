@@ -10,9 +10,6 @@ export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 
-//! REVISAR GETACIVITIES Y CREAR LA ACCION DE RENDERIZAR ESAS CARTRAS CON ACVITIDIADES
-
-
 export const getCountries = () => {
     return async function(dispatch) {
         try {
@@ -103,9 +100,11 @@ export const orderByPopulation = (s) => {
 }
 
 export function FilterByContinent(c) {
-    return {
-        type: FILTER_BY_CONTINENT,
-        payload: c
+    return  function(dispatch) {
+        dispatch({
+            type: FILTER_BY_CONTINENT,
+            payload: c
+        })
     };
 }
 

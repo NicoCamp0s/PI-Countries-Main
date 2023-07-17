@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import {useState} from "react";
 import { useDispatch } from "react-redux";
 import * as act from "../../redux/actions";
 
@@ -20,7 +20,6 @@ const SearBar = () => {
     }
 
     function handleButton (e) {
-        //e.preventDefault();
         dispatch(act.getByName(name))
     }
 

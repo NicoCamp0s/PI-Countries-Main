@@ -1,8 +1,9 @@
 import css from "./paginate.module.css";
 import React from "react";
 
-const Paginate = ({ countriesPerPage, countries, currentPage, paginate }) => {
+const Paginate = ({ countriesPerPage, countries, currentPage, paginate, setCurrentPage }) => {
     const pageNumbers = [];
+    //se calcula el numero total de paginas
     const totalPages = Math.ceil(countries / countriesPerPage);
   
     // Determinar el rango de páginas a mostrar
@@ -13,9 +14,26 @@ const Paginate = ({ countriesPerPage, countries, currentPage, paginate }) => {
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(i);
     }
-  
+    
+    function handleButtonPrev() {
+      if (currentPage !== 1) {
+          setCurrentPage()
+          window.scrollTo(0, 0);
+        setCurrentPage(currentPage - 1);
+      }
+    }
+    
+    function handleButtonNext() {
+      if (currentPage !== totalPages) {
+        setCurrentPage()
+        window.scrollTo(0, 0);
+        setCurrentPage(currentPage + 1);
+      }
+    }
+
     return (
       <div className={css.pagination}>
+        <button onClick={() => handleButtonPrev()}> prev </button>
         <ul>
           {pageNumbers.map((num) => (
             <li key={num}>
@@ -24,7 +42,7 @@ const Paginate = ({ countriesPerPage, countries, currentPage, paginate }) => {
                 style={
                   num === currentPage
                     ? {
-                        backgroundColor: "#fd684d",
+                        backgroundColor: "#082aa8",
                         color: "white",
                         border: "1px solid #777db8",
                       }
@@ -36,6 +54,7 @@ const Paginate = ({ countriesPerPage, countries, currentPage, paginate }) => {
             </li>
           ))}
         </ul>
+        <button onClick={() => handleButtonNext()}> next </button>
       </div>
     );
   };
