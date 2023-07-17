@@ -1,15 +1,21 @@
 {
     "version": 2,
+    "name": "petgram-TU_NOMBRE",
     "builds": [
-      {
-        "src": "index.js",
-        "use": "@now/node"
-      }
-    ], 
+        { "use": "@vercel/static-build", "src": "package.json"}
+    ],
     "routes": [
-        { 
-            "src": "/(.*)",
-            "dest": "index.js"
-          }
+        {
+            "src": "(.*).js",
+            "dest": "/index.js"            
+        },
+        {
+            "src": "(.*).json",
+            "dest": "/$1.json"            
+        },
+        {
+            "src": "/.*",
+            "dest": "index.html"
+        }
     ]
-  }
+} 
